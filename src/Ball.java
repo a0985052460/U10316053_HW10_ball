@@ -11,7 +11,7 @@ public class Ball extends JPanel {
   private Timer timer = new Timer(delay, new TimerListener());
 
   private int x = 0; private int y = 0; // Current ball position
-  private int radius = 5; // Ball radius
+  private int radius = 15; // Ball radius
   private int dx = 2; // Increment on ball's x-coordinate
   private int dy = 2; // Increment on ball's y-coordinate
 
@@ -26,12 +26,21 @@ public class Ball extends JPanel {
     }
   }
 
+  int red=0;
+  int green=0;
+  int blue=0;
+  int count=256;
   @Override
   protected void paintComponent(Graphics g) {
     super.paintComponent(g);
-
-    g.setColor(Color.red);
-
+    
+    count++;
+    red=count%256;
+    green=count%128;
+    blue=count%64;
+    Color myColor = new Color(red,green,blue);
+    g.setColor(myColor);
+    //g.setColor(Color.red);
     // Check boundaries
     if (x < 0 || x > getWidth()) 
       dx *= -1;
